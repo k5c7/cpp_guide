@@ -19,3 +19,21 @@ do not make these measures (number of lines or cognitive-complexity) as your tar
 > a() > b()
 
 > a() > b() > c() > d()
+
+### 4) Do not optimize prematurely (please)
+Compilers are smart enough for simple tasks. For example when we multiply an integer number with 33, the compiler shift register by 5 bits then add the number. We shouldn't think about this kind of premature optimization techniques. At first, we should focus on program flow and data structures. If the program is slower than we expect, then we should examine the bottleneck by using profiler. After that finding the function which causes slowness, then we can try to optimize it. You can see the corresponding assembly function below at [godbolt](https://godbolt.org). Do not forget to add `-O3` optimization flag.
+
+```cpp
+int function(int number)
+{
+    return number*33;
+}
+```
+
+```assembly
+function(int):
+        mov     eax, edi
+        sal     eax, 5
+        add     eax, edi
+        ret
+```
