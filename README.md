@@ -4,8 +4,7 @@
 Compilers are product of hundreds of smart people. Hence, we shouldn't ignore the compiler warnings even though they have false positive results. You can use the CMake commands below to enable all compiler warnings and treat them as error.
 
 ``` cmake
-target_compile_options(app PRIVATE -Werror)
-target_compile_options(app PRIVATE -Wall)
+target_compile_options(app PRIVATE -Wall -Werror)
 ```
 
 ### 2) Make variables constant if possible
